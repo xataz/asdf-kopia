@@ -3,8 +3,6 @@ REPO_URL="https://github.com/kopia/kopia"
 
 list_all () {
   git ls-remote --tags "${REPO_URL}" | awk '{print $2}' | sed -e 's#refs/tags/##' -e 's#\^{}##' -e 's#v##' | uniq | sort -t '.' -k 1,1n -k 2,2n | tr '\n' ' '
-
-  get_git_tags "https://github.com/kopia/kopia" | tr -s ' '
 }
 
 latest () {
