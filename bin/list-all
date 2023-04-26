@@ -12,7 +12,7 @@ get_git_tags () {
 }
 
 list_all () {
-  get_git_tags "https://github.com/kopia/kopia" | tr -s ' ' | sed "s/v//"
+  get_git_tags "https://github.com/kopia/kopia" | tr -s ' ' | sed "s/v//g"
 }
 
 list_all
