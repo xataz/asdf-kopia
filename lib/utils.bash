@@ -18,8 +18,8 @@ download_release () {
   
   echo "Downloading version ${ASDF_INSTALL_VERSION} of ${toolname}"
   if curl -sfL -o "${ASDF_DOWNLOAD_PATH}/${toolname}.tar.gz" "${download_url}"; then
-
-  tar zxf "${ASDF_DOWNLOAD_PATH}/${toolname}.tar.gz" -C "${ASDF_DOWNLOAD_PATH}"
+    tar zxf "${ASDF_DOWNLOAD_PATH}/${toolname}.tar.gz" -C "${ASDF_DOWNLOAD_PATH}"
+  fi
 
   cleanup
 }
