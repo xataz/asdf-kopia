@@ -5,14 +5,4 @@ set \
   -o pipefail \
   -o errexit
 
-get_git_tags () {
-  local -r repo_url="$1"
-
-  git ls-remote --tags "${repo_url}" | awk '{print $2}' | sed -e 's#refs/tags/##' -e 's#\^{}##' | sort -u | sort -t '.' -k 1,1n -k 2,2n | tr '\n' ' '
-}
-
-list_all () {
-  get_git_tags "https://github.com/kopia/kopia" | tr -s ' ' | sed "s/v//g"
-}
-
 list_all
