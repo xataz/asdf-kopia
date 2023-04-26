@@ -1,17 +1,14 @@
+REPO_URL="https://github.com/kopia/kopia"
+
 
 list_all () {
-  local -r repo_url="$1"
-
-  git ls-remote --tags "${repo_url}" | awk '{print $2}' | sed -e 's#refs/tags/##' -e 's#\^{}##' -e 's#v##' | uniq | sort -t '.' -k 1,1n -k 2,2n | tr '\n' ' '
+  git ls-remote --tags "${REPO_URL}" | awk '{print $2}' | sed -e 's#refs/tags/##' -e 's#\^{}##' -e 's#v##' | uniq | sort -t '.' -k 1,1n -k 2,2n | tr '\n' ' '
 
   get_git_tags "https://github.com/kopia/kopia" | tr -s ' '
 }
 
 latest () {
-  local -r repo_url="$1"
-
-  git ls-remote --tags "${repo_url}" | awk '{print $2}' | sed -e 's#refs/tags/##' -e 's#\^{}##' -e 's#v##' | grep -E "^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$" | uniq | sort -t '.' -k 1,1n -k 2,2n | tr '\n' ' '
-
+  git ls-remote --tags "${REPO_URL}" | awk '{print $2}' | sed -e 's#refs/tags/##' -e 's#\^{}##' -e 's#v##' | grep -E "^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$" | uniq | sort -t '.' -k 1,1n -k 2,2n | tr '\n' ' '
 }
 
 cleanup () {
@@ -98,7 +95,7 @@ get_download_url () {
   fi
 
   if [ $IS_EXISTS -eq 1 ]; then
-    echo https://github.com/kopia/kopia/releases/download/v"${version}"/kopia-"${version}"-"${platform}"-"${architecture}".tar.gz
+    echo "${REPO_URL}"/releases/download/v"${version}"/kopia-"${version}"-"${platform}"-"${architecture}".tar.gz
   fi
 
 }
