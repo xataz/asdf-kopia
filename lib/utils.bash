@@ -30,8 +30,8 @@ install_version () {
   local -r version="$1"
 
   echo "Installing version ${ASDF_INSTALL_VERSION} of ${toolname}"
-  mkdir -p "${ASDF_INSTALL_PATH}/bin/${toolname}"
-  cp "${ASDF_DOWNLOAD_PATH}"/*/"${toolname}" "${ASDF_INSTALL_PATH}"/bin/
+  mkdir -p "${ASDF_INSTALL_PATH}/bin"
+  cp "${ASDF_DOWNLOAD_PATH}"/*/"${toolname}" "${ASDF_INSTALL_PATH}"/bin/"${toolname}"
   chmod +x "${ASDF_INSTALL_PATH}"/bin/"${toolname}"
 }
 
